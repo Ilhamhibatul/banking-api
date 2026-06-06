@@ -1,29 +1,27 @@
 const express = require('express');
+const path = require('path');
 require('dotenv').config();
 
-const nasabahRoutes = require('./routes/nasabahRoutes');
-const transaksiRoutes = require('./routes/transaksiRoutes');
+const authRoutes = require('./routes/authRoutes');
+const accountRoutes = require('./routes/accountRoutes');
+const billingRoutes = require('./routes/billingRoutes');
 
 const app = express();
 
-// Middleware
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
 
-// Routes
-app.use('/nasabah', nasabahRoutes);
-app.use('/transaksi', transaksiRoutes);
+app.use('/auth', authRoutes);
+app.use('/', accountRoutes);
+app.use('/', billingRoutes);
 
 // Health check — endpoint untuk cek apakah server jalan
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    pesan: 'Banking API berjalan',
-    versi: '1.0.0'
-  });
+app.get('/health', (req, res) => {
+  res.json({ success: true, pesan: 'Portal Billing API berjalan', versi: '1.0.0' });
 });
 
 // Jalankan server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🏦 Banking API berjalan di http://localhost:${PORT}`);
+  console.log(`🏦 Portal Billing API berjalan di http://localhost:${PORT}`);
 });

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Tagihan - Portal Billing</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="page-container">
+    <div class="navbar">
+      <a href="/">Beranda</a>
+      <a href="/billing-list.html">Daftar Tagihan</a>
+      <a href="/pay-bill.html">Bayar Tagihan</a>
+      <a href="/account.html">Cek Saldo</a>
+      <a href="#" id="logout-link">Logout</a>
+    </div>
+    <h1>Manajemen Tagihan</h1>
+    <div id="manage-message" class="message"></div>
+    <form id="create-billing-form" class="form-card">
+      <h2>Buat Billing Baru</h2>
+      <label>ID Billing</label>
+      <input name="id_billing" type="text" required />
+      <label>User ID</label>
+      <input name="user_id" type="number" required />
+      <label>Product ID</label>
+      <input name="product_id" type="number" required />
+      <label>Account ID</label>
+      <input name="account_id" type="number" required />
+      <label>Jumlah</label>
+      <input name="amount" type="number" min="1" required />
+      <label>Due Date</label>
+      <input name="due_date" type="date" required />
+      <label>Note</label>
+      <textarea name="note" rows="3"></textarea>
+      <button type="submit">Buat Billing</button>
+    </form>
+
+    <form id="update-billing-form" class="form-card">
+      <h2>Update Billing</h2>
+      <label>ID Billing</label>
+      <input name="id_billing" type="text" required />
+      <label>Jumlah</label>
+      <input name="amount" type="number" min="1" />
+      <label>Due Date</label>
+      <input name="due_date" type="date" />
+      <label>Note</label>
+      <textarea name="note" rows="3"></textarea>
+      <button type="submit">Update Billing</button>
+    </form>
+
+    <form id="delete-billing-form" class="form-card">
+      <h2>Hapus Billing</h2>
+      <label>ID Billing</label>
+      <input name="id_billing" type="text" required />
+      <button type="submit">Hapus Billing</button>
+    </form>
+  </main>
+  <script src="/js/app.js"></script>
+</body>
+</html>

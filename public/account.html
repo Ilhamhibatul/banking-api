@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cek Saldo & Mutasi - Portal Billing</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="page-container">
+    <div class="navbar">
+      <a href="/">Beranda</a>
+      <a href="/billing-list.html">Daftar Tagihan</a>
+      <a href="/billing-manage.html">Manajemen Tagihan</a>
+      <a href="/pay-bill.html">Bayar Tagihan</a>
+      <a href="#" id="logout-link">Logout</a>
+    </div>
+    <h1>Cek Saldo & Mutasi</h1>
+    <p class="info"> Masukkan nomor rekening untuk cek saldo dan melihat mutasi transaksi. </p>
+    <div id="account-message" class="message"></div>
+    <form id="check-balance-form" class="form-card">
+      <h2>Cek Saldo</h2>
+      <label>Nomor Rekening</label>
+      <input name="nomor_rekening" type="text" required />
+      <button type="submit">Cek Saldo</button>
+    </form>
+
+    <div id="balance-result" class="panel"></div>
+
+    <form id="transaction-history-form" class="form-card">
+      <h2>Mutasi Rekening</h2>
+      <label>Nomor Rekening</label>
+      <input name="nomor_rekening" type="text" required />
+      <button type="submit">Lihat Mutasi</button>
+    </form>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Tipe</th>
+            <th>Jumlah</th>
+            <th>Saldo Sebelum</th>
+            <th>Saldo Sesudah</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody id="history-table-body"></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="/js/app.js"></script>
+</body>
+</html>

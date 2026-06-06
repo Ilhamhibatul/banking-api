@@ -1,35 +1,23 @@
-# 🏦 Banking API
-
-REST API sistem perbankan sederhana menggunakan Node.js dan PostgreSQL.
-
-## Teknologi
+﻿## Tech
 - Node.js + Express
 - PostgreSQL
-- Docker ready
+- Frontend HTML/CSS/JavaScript statis
 
 ## Fitur
-- Pendaftaran nasabah baru
-- Lihat data nasabah & saldo
-- Setor tunai
-- Tarik tunai
-- Transfer antar rekening
-- Riwayat transaksi
+- Autentikasi login untuk admin dan mahasiswa
+- Billing inquiry, pembayaran, refund, dan manajemen billing
+- Cek saldo rekening settlement
+- Mutasi transaksi rekening
+- Halaman frontend untuk login, daftar tagihan, manajemen tagihan, pembayaran, dan cek saldo
 
 ## Cara Menjalankan
 
-### 1. Clone repository
-```bash
-git clone https://github.com/USERNAME/banking-api.git
-cd banking-api
-```
-
-### 2. Install dependencies
-```bash
+### 1. Install dependencies
 npm install
-```
 
-### 3. Setup environment
-Buat file `.env` berdasarkan contoh berikut:
+### 2. Setup environment
+Buat file `.env.example`:
+
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=banking_db
@@ -37,46 +25,41 @@ DB_USER=postgres
 DB_PASSWORD=your_password
 PORT=3000
 
+### 3. Setup database
+Jalankan script SQL 
 
-### 4. Setup database
-Jalankan script SQL di folder `database/init.sql` menggunakan DBeaver atau psql.
+### 4. Jalankan aplikasi
+npm start
 
-### 5. Jalankan aplikasi
-```bash
-node src/app.js
-```
+### 5. Buka frontend
+Akses halaman frontend di browser:
+- http://localhost:3000/
+- http://localhost:3000/login.html
 
-## Endpoints
+## Endpoint Utama
 
 | Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| GET | / | Health check |
-| POST | /nasabah | Daftar nasabah baru |
-| GET | /nasabah/:id | Lihat data nasabah |
-| POST | /transaksi/setor | Setor tunai |
-| POST | /transaksi/tarik | Tarik tunai |
-| POST | /transaksi/transfer | Transfer antar rekening |
-| GET | /transaksi/riwayat/:nomor | Riwayat transaksi |
 
-## Contoh Request
+| POST | /auth | Login user |
+| GET | /check-balance?nomor_rekening=... | Cek saldo akun |
+| POST | /transaction-history | Lihat mutasi rekening |
+| GET | /bill-inquiry/:idbilling | Inquiry billing |
+| POST | /bill-pay | Bayar billing |
+| POST | /refund | Refund billing (admin) |
+| GET | /list-billing | Daftar billing |
+| GET | /detail-billing/:idbilling | Detail billing |
+| POST | /create-billing | Buat billing baru (admin) |
+| PUT | /update-billing | Update billing pending (admin) |
+| DELETE | /delete-billing | Hapus billing pending (admin) |
+| GET | /products | Daftar produk |
+| POST | /products | Buat produk baru (admin) |
 
-### Setor Tunai
-```json
-POST /transaksi/setor
-{
-  "nomor_rekening": "1234567890",
-  "jumlah": 500000,
-  "keterangan": "Setor gaji"
-}
-```
+## Akun 
 
-### Transfer
-```json
-POST /transaksi/transfer
-{
-  "rekening_asal": "1234567890",
-  "rekening_tujuan": "0987654321",
-  "jumlah": 200000,
-  "keterangan": "Transfer ke teman"
-}
-```
+- Admin
+  - Email: admin@fakultas.ac.id
+  - Password: admin123
+- Mahasiswa
+  - Email: mahasiswa1@kampus.ac.id
+  - Password: mahasiswa123
+

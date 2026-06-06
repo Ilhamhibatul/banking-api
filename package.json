@@ -1,9 +1,10 @@
 {
   "name": "banking-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "REST API untuk portal tagihan mahasiswa dan website frontend sederhana.",
+  "main": "src/app.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

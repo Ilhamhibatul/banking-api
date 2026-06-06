@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Tagihan - Portal Billing</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="page-container">
+    <div class="navbar">
+      <a href="/">Beranda</a>
+      <a href="/billing-manage.html">Manajemen Tagihan</a>
+      <a href="/pay-bill.html">Bayar Tagihan</a>
+      <a href="/account.html">Cek Saldo</a>
+      <a href="#" id="logout-link">Logout</a>
+    </div>
+    <h1>Daftar Tagihan</h1>
+    <div id="billing-message" class="message"></div>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Billing</th>
+            <th>Mahasiswa</th>
+            <th>Produk</th>
+            <th>Nomor Rekening</th>
+            <th>Jumlah</th>
+            <th>Status</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody id="billing-table-body"></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="/js/app.js"></script>
+</body>
+</html>
